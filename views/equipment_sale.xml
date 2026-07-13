@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="price"/>
+                <field name="x_price"/>
             </tree>
         </field>
     </record>
@@ -19,8 +19,8 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="price"/>
-                        <field name='image' widget='image' class='oe_avatar'/>
+                        <field name="x_price"/>
+                        <field name='image_1920' widget='image' class='o_image_64_cover'/>
                     </group>
                 </sheet>
             </form>

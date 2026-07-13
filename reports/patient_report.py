@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from odoo import api, models
 
 
@@ -11,7 +9,7 @@ class PatientReport(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
 
         docs = self.env['kmhospital.patient'].browse(docids)
-        appointments = self.env['kmhospital.appointment'].search([("name", "=", docids)])
+        appointments = self.env['kmhospital.appointment'].search([('patient_id', 'in', docids)])
         appointment_list = []
         for appointment in appointments:
             values = {

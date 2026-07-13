@@ -26,7 +26,7 @@ class HospitalAppointment(models.Model):
         ('done', 'Done'),
         ('cancel', 'Canceled')
     ], default='draft', required=True, tracking=True)
-    appointment_date = fields.Datetime(string='Appointment Date', default=fields.datetime.now(), tracking=True)
+    appointment_date = fields.Datetime(string='Appointment Date', default=fields.Datetime.now, tracking=True)
     checkup_date = fields.Datetime(string='Checkup Date', required=True, tracking=True)
     prescription_medicine_ids = fields.One2many("kmhospital.appointment.prescription.medicine",
                                                 "appointment_medicine_id", string="Prescription Medicine")
@@ -55,12 +55,12 @@ class HospitalAppointment(models.Model):
 
     @api.model
     def create(self, vals):
-        if not vals['description']:
+        if not vals.get('description'):
             vals['description'] = "Enter the description here"
         if vals.get('name', _('New')) == _('New'):
             vals['name'] = self.env['ir.sequence'].next_by_code('kmhospital.appointment') or _('New')
 
-        res = super(HospitalAppointment, self).create(vals)
+        res = super().create(vals)
         return res
 
     @api.onchange('patient_id')

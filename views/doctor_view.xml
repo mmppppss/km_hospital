@@ -40,7 +40,7 @@
                             <field name="status"/>
                             <field name="age"/>
                             <field name="joined_from"/>
-                            <field name="image" widget='image' class='oe_avatar'/>
+                            <field name="image" widget='image' class='o_image_64_cover'/>
                         </group>
                     </group>
                     <notebook>
@@ -57,11 +57,7 @@
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
+                <chatter/>
             </form>
         </field>
     </record>
@@ -109,8 +105,8 @@
                 <field name="department_id"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
+                        <div class="o_kanban_record">
+                            <div class="o_kanban_record_body">
                                 <h1 class="o_kanban_record_title">
                                     <field name="name"/>
                                 </h1>
@@ -147,7 +143,7 @@
         <field name="type">ir.actions.server</field>
         <field name="model_id" ref="model_kmhospital_doctor"/>
         <field name="binding_model_id" ref="model_kmhospital_doctor"/>
-        <field name="binding_view_types">list,form</field>
+        <field name="binding_view_types">tree,form</field>
         <field name="state">code</field>
         <field name="code">records.action_status_halftime()</field>
     </record>
@@ -157,7 +153,7 @@
         <field name="type">ir.actions.server</field>
         <field name="model_id" ref="model_kmhospital_doctor"/>
         <field name="binding_model_id" ref="model_kmhospital_doctor"/>
-        <field name="binding_view_types">list,form</field>
+        <field name="binding_view_types">tree,form</field>
         <field name="state">code</field>
         <field name="code">records.action_status_fulltime()</field>
     </record>

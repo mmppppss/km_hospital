@@ -39,7 +39,7 @@ class HospitalDoctor(models.Model):
     @api.constrains('email')
     def _check_email(self):
         for record in self:
-            valid_email = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
+            valid_email = re.match(r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
                                    record.email)
 
             if valid_email is None:
@@ -51,8 +51,7 @@ class HospitalDoctor(models.Model):
             if record.age <= 0:
                 raise ValidationError('Age must be greater than 0')
 
-    # same as view_appointment_ids but implemented using computed fields
-    # compute appointments of individual doctor
+    @api.depends('view_appointment_ids')
     def _compute_appointments(self):
         for record in self:
             record.total_appointments = self.env['kmhospital.appointment'].search_count(

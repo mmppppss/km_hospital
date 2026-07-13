@@ -17,12 +17,16 @@ class HospitalAppointmentWizard(models.TransientModel):
     email = fields.Char(string='Email', related='patient_id.email')
     age = fields.Integer(string='Age', related='patient_id.age')
     description = fields.Text()
-    appointment_date = fields.Datetime(string='Appointment Date', default=fields.datetime.now())
+    appointment_date = fields.Datetime(string='Appointment Date', default=fields.Datetime.now)
     checkup_date = fields.Datetime(string='Checkup Date', required=True)
     appointed_doctor_id = fields.Many2one("kmhospital.doctor", string="Doctor name", required=True)
 
-    @api.constrains('appointment_date', 'checkup_date')
-    def _check_date_validation(self):
-        for record in self:
-            if record.checkup_date < record.appointment_date:
-                raise ValidationError('Checkup date should not be previous date.')
+    @api.onchange('appointment_date', 'checkup_date')
+    def _onchange_date_validation(self):
+        if self.checkup_date and self.appointment_date and self.checkup_date < self.appointment_date:
+            return {
+                'warning': {
+                    'title': _("Invalid Date"),
+                    'message': _('Checkup date should not be previous date.'),
+                }
+            }

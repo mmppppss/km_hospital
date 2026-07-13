@@ -5,5 +5,5 @@ class HospitalMedicalTest(models.Model):
     _description = 'Medical Test'
 
     name = fields.Char(string="Medical test name", required=True)
-    price = fields.Integer(string="Price", required=True)
-    medical_test_ids = fields.Many2many(string="Medical tests")
+    price = fields.Float(string="Price", required=True)
+    medical_test_ids = fields.Many2many('kmhospital.medicaltest', string="Medical tests")

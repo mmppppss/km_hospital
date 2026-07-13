@@ -49,11 +49,7 @@
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
+                <chatter/>
             </form>
         </field>
     </record>
@@ -82,8 +78,8 @@
                 <field name="email"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
+                        <div class="o_kanban_record">
+                            <div class="o_kanban_record_body">
                                 <h1 class="o_kanban_record_title">
                                     <field name="name"/>
                                 </h1>

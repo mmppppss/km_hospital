@@ -16,7 +16,7 @@
                 <t t-call="web.external_layout">
                     <div class="page">
                         <h2 align="center">Patient Report</h2>
-                        <div class="oe_structure"/>
+                        <div/>
                         <div class="row">
                             <div class="col-md-4">
                                 <table class="table table-condensed" style="border: 2px solid black !important;">
