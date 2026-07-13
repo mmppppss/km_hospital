@@ -5,7 +5,7 @@
         <field name="name">kmhospital.patient.tree</field>
         <field name="model">kmhospital.patient</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name"/>
                 <field name="address"/>
                 <field name="gender"/>
@@ -13,7 +13,7 @@
                 <field name="email"/>
                 <field name="age"/>
                 <field name="patient_appointment_ids"/>
-            </tree>
+            </list>
         </field>
     </record>
 
