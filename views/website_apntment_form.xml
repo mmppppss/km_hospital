@@ -16,7 +16,7 @@
                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                             <div class="form-group">
                                 <label for="name" class="control-label">Patient Name</label>
-                                <select name="name" class="form-control link-style">
+                                <select name="patient_id" class="form-control link-style">
                                     <t t-foreach='patient_rec' t-as="patient">
                                         <option t-esc='patient.name' t-att-value='patient.id'/>
                                     </t>
@@ -26,7 +26,7 @@
                                 <label for="status" class="control-label">Status</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="draft">Draft</option>
-                                    <option value="confirmed">Confirmed</option>
+                                    <option value="confirm">Confirmed</option>
                                     <option value="done">Done</option>
                                 </select>
                             </div>
@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="clearfix">
-                                <button type="submit" class="btn btn-primary">Create Patient</button>
+                                <button type="submit" class="btn btn-primary">Create Appointment</button>
                             </div>
                             <br/>
                         </form>
