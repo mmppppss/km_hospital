@@ -157,8 +157,7 @@
         <field name="name">kmhospital.appointment.calendar</field>
         <field name="model">kmhospital.appointment</field>
         <field name="arch" type="xml">
-            <calendar string="Appointments" date_start="appointment_date" date_stop="checkup_date"
-                      event_open_window="true" mode="month">
+            <calendar string="Appointments" date_start="appointment_date" date_stop="checkup_date">
                 <field name="patient_id"/>
             </calendar>
         </field>
